@@ -286,3 +286,91 @@ body.auth-page {
 .auth-box h2 {
     text-align: center;
 }
+
+/* AUTH PAGE LAYOUT */
+body.auth-page {
+    background: #fff7f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Two-column wrapper */
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Left banner */
+.auth-banner {
+    flex: 1;
+    background: #ffdde1;
+    padding: 60px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.auth-banner h2 {
+    font-size: 2rem;
+    color: #4a2c2a;
+    max-width: 300px;
+}
+
+/* Right form box */
+.auth-box {
+    flex: 1;
+    background: white;
+    padding: 40px;
+    max-width: 450px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin: 40px;
+}
+
+/* Form layout */
+.auth-box .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.auth-box input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.auth-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Show password button */
+#togglePassword {
+    margin-top: 8px;
+    align-self: flex-start;
+}
+
+/* Mobile responsive */
+@media (max-width: 800px) {
+    .auth-wrapper {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .auth-banner {
+        width: 100%;
+        padding: 40px 20px;
+    }
+
+    .auth-box {
+        width: 100%;
+        margin: 20px 0;
+    }
+}
