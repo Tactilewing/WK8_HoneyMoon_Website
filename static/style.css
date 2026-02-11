@@ -374,3 +374,36 @@ body.auth-page {
         margin: 20px 0;
     }
 }
+
+/* Vertical auth layout */
+.auth-wrapper-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+/* Banner on top */
+.auth-banner-top {
+    background: #ffdde1;
+    padding: 40px 20px;
+    width: 100%;
+    text-align: center;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.auth-banner-top h2 {
+    font-size: 2rem;
+    color: #4a2c2a;
+}
+
+/* Form box */
+.auth-box {
+    background: white;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
