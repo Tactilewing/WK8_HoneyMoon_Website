@@ -72,15 +72,29 @@ document.querySelector("#loginForm")?.addEventListener("submit", handleLogin);
 // =========================
 async function updateNavbar() {
     const { data } = await client.auth.getSession();
-
     const navItem = document.querySelector("#authNavItem");
     if (!navItem) return;
 
     if (data.session) {
-        // User is logged in — replace Login with icon
+        // User is logged in — show profile dropdown
         navItem.innerHTML = `
-            <a href="#" onclick="logout()" title="Logout" class="user-icon">👤</a>
+            <div class="profile-menu">
+                <span class="user-icon">👤</span>
+                <div class="dropdown hidden">
+                    <a href="#" id="profileBtn">Profile</a>
+                    <a href="#" onclick="logout()">Logout</a>
+                </div>
+            </div>
         `;
+
+        // Toggle dropdown on click
+        const icon = navItem.querySelector(".user-icon");
+        const dropdown = navItem.querySelector(".dropdown");
+
+        icon.addEventListener("click", () => {
+            dropdown.classList.toggle("hidden");
+        });
+
     } else {
         // User is logged out — show Login
         navItem.innerHTML = `<a href="login.html">Login</a>`;
@@ -88,3 +102,4 @@ async function updateNavbar() {
 }
 
 updateNavbar();
+
