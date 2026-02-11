@@ -235,3 +235,54 @@ footer {
     font-size: 0.8rem;
     cursor: pointer;
 }
+
+/* Center the entire login/signup page */
+body.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: #fff7f9;
+}
+
+/* Container that holds the form */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+}
+
+/* The actual login/signup box */
+.auth-box {
+    background: white;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+/* Make form fields align properly */
+.auth-box .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+/* Inputs full width */
+.auth-box input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Center the header text */
+.simple-header h2,
+.auth-box h2 {
+    text-align: center;
+}
