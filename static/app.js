@@ -1,7 +1,7 @@
 // Initialize Supabase client
 const client = supabase.createClient(
     "https://tauhvazmkwoknexyeqfh.supabase.co",
-    "sb-publishable-cPbUr91fgcyXr0R6m34W5w_RVk-wF2O"
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRhdWh2YXpta3dva25leHllcWZoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA4MjA0MTUsImV4cCI6MjA4NjM5NjQxNX0.EnsEA5jbMYKNvwqGYD3t4q2AnOvwxCWtbUCvKVHafk8"
 );
 
 // =========================
