@@ -220,3 +220,18 @@ footer {
 .hidden {
     display: none;
 }
+
+
+.error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 4px;
+    display: block;
+}
+
+#togglePassword {
+    margin-left: 10px;
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}

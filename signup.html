@@ -21,17 +21,34 @@
 
         <!-- Corrected form -->
         <form id="signupForm">
-            <label for="name">Full Name</label>
-            <input id="name" name="name" type="text" required>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" id="name">
+                <small class="error" id="nameError"></small>
+            </div>
 
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="email">
+                <small class="error" id="emailError"></small>
+            </div>
 
-            <label for="password">Password</label>
-            <input id="password" name="password" type="password" required>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password">
+                <button type="button" id="togglePassword">Show</button>
+                <small class="error" id="passwordError"></small>
+            </div>
 
-            <button type="submit">Create Account</button>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" id="confirmPassword">
+                <small class="error" id="confirmError"></small>
+            </div>
+
+            <button type="submit">Sign Up</button>
         </form>
+
 
         <p>Already have an account? <a href="login.html">Login</a></p>
     </section>

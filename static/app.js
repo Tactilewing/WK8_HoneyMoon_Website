@@ -10,10 +10,64 @@ const client = supabase.createClient(
 async function handleSignup(event) {
     event.preventDefault();
 
-    const name = document.querySelector("#name")?.value;
-    const email = document.querySelector("#email")?.value;
-    const password = document.querySelector("#password")?.value;
+    // Inputs
+    const name = document.querySelector("#name").value.trim();
+    const email = document.querySelector("#email").value.trim();
+    const password = document.querySelector("#password").value.trim();
+    const confirmPassword = document.querySelector("#confirmPassword").value.trim();
 
+    // Error elements
+    const nameError = document.querySelector("#nameError");
+    const emailError = document.querySelector("#emailError");
+    const passwordError = document.querySelector("#passwordError");
+    const confirmError = document.querySelector("#confirmError");
+
+    // Reset errors
+    nameError.textContent = "";
+    emailError.textContent = "";
+    passwordError.textContent = "";
+    confirmError.textContent = "";
+
+    let valid = true;
+
+    // Name validation
+    if (!name) {
+        nameError.textContent = "Please enter your name.";
+        valid = false;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        emailError.textContent = "Please enter a valid email address.";
+        valid = false;
+    }
+
+    // Password validation
+    const passwordRules = [
+        { test: password.length >= 8, msg: "At least 8 characters" },
+        { test: /[A-Z]/.test(password), msg: "At least one uppercase letter" },
+        { test: /[a-z]/.test(password), msg: "At least one lowercase letter" },
+        { test: /[0-9]/.test(password), msg: "At least one number" },
+        { test: /[^A-Za-z0-9]/.test(password), msg: "At least one symbol" }
+    ];
+
+    const failedRules = passwordRules.filter(r => !r.test);
+
+    if (failedRules.length > 0) {
+        passwordError.textContent = "Password must include: " + failedRules.map(r => r.msg).join(", ");
+        valid = false;
+    }
+
+    // Confirm password
+    if (password !== confirmPassword) {
+        confirmError.textContent = "Passwords do not match.";
+        valid = false;
+    }
+
+    if (!valid) return;
+
+    // Create user
     const { error } = await client.auth.signUp({
         email,
         password,
@@ -23,13 +77,14 @@ async function handleSignup(event) {
     });
 
     if (error) {
-        alert("Signup failed: " + error.message);
+        emailError.textContent = error.message;
         return;
     }
 
-    alert("Signup successful! Redirecting...");
+    alert("Signup successful!");
     window.location.href = "index.html";
 }
+
 
 // =========================
 // LOGIN
@@ -37,22 +92,40 @@ async function handleSignup(event) {
 async function handleLogin(event) {
     event.preventDefault();
 
-    const email = document.querySelector("#email")?.value;
-    const password = document.querySelector("#password")?.value;
+    const email = document.querySelector("#email").value.trim();
+    const password = document.querySelector("#password").value.trim();
 
-    const { error } = await client.auth.signInWithPassword({
-        email,
-        password
-    });
+    const emailError = document.querySelector("#emailError");
+    const passwordError = document.querySelector("#passwordError");
+
+    emailError.textContent = "";
+    passwordError.textContent = "";
+
+    let valid = true;
+
+    if (!email.includes("@") || !email.includes(".")) {
+        emailError.textContent = "Please enter a valid email.";
+        valid = false;
+    }
+
+    if (!password) {
+        passwordError.textContent = "Please enter your password.";
+        valid = false;
+    }
+
+    if (!valid) return;
+
+    const { error } = await client.auth.signInWithPassword({ email, password });
 
     if (error) {
-        alert("Login failed: " + error.message);
+        passwordError.textContent = "Incorrect email or password.";
         return;
     }
 
-    alert("Login successful!");
     window.location.href = "index.html";
 }
+
+
 
 // =========================
 // LOGOUT
@@ -139,11 +212,55 @@ async function updateNavbar() {
 // INITIALIZE EVERYTHING
 // =========================
 document.addEventListener("DOMContentLoaded", () => {
+
+    // =========================
+    // SIGNUP FORM
+    // =========================
     document.querySelector("#signupForm")?.addEventListener("submit", handleSignup);
+
+    // Real-time password strength check
+    document.querySelector("#password")?.addEventListener("input", () => {
+        const password = document.querySelector("#password").value;
+        const passwordError = document.querySelector("#passwordError");
+
+        const strong =
+            password.length >= 8 &&
+            /[A-Z]/.test(password) &&
+            /[a-z]/.test(password) &&
+            /[0-9]/.test(password) &&
+            /[^A-Za-z0-9]/.test(password);
+
+        passwordError.textContent = strong ? "" : "Password is still too weak.";
+    });
+
+    // Show/hide password toggle
+    document.querySelector("#togglePassword")?.addEventListener("click", () => {
+        const input = document.querySelector("#password");
+        input.type = input.type === "password" ? "text" : "password";
+    });
+
+
+    // =========================
+    // LOGIN FORM
+    // =========================
     document.querySelector("#loginForm")?.addEventListener("submit", handleLogin);
 
+
+    // =========================
+    // RECOMMENDATION ENGINE
+    // =========================
     document.querySelector("#recommendBtn")?.addEventListener("click", handleRecommendation);
+
+
+    // =========================
+    // ITINERARY PLANNER
+    // =========================
     document.querySelector("#addItemBtn")?.addEventListener("click", addItineraryItem);
 
+
+    // =========================
+    // NAVBAR LOGIN STATE
+    // =========================
     updateNavbar();
 });
+
