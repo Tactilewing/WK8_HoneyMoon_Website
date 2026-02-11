@@ -71,8 +71,10 @@ document.querySelector("#loginForm")?.addEventListener("submit", handleLogin);
 // UPDATE NAVBAR BASED ON LOGIN STATE
 // =========================
 async function updateNavbar() {
-    console.log("SESSION CHECK:", data.session);
     const { data } = await client.auth.getSession();
+
+    console.log("SESSION CHECK:", data.session); // <-- now it's safe
+
     const navItem = document.querySelector("#authNavItem");
     if (!navItem) return;
 
