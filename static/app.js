@@ -71,14 +71,13 @@ document.querySelector("#loginForm")?.addEventListener("submit", handleLogin);
 // UPDATE NAVBAR BASED ON LOGIN STATE
 // =========================
 async function updateNavbar() {
-    const { data } = await client.auth.getSession();
-
-    console.log("SESSION CHECK:", data.session); // <-- now it's safe
+    const sessionResponse = await client.auth.getSession();
+    console.log("SESSION CHECK:", sessionResponse.data.session);
 
     const navItem = document.querySelector("#authNavItem");
     if (!navItem) return;
 
-    if (data.session) {
+    if (sessionResponse.data.session) {
         navItem.innerHTML = `
             <div class="profile-menu">
                 <span class="user-icon">👤</span>
@@ -102,4 +101,5 @@ async function updateNavbar() {
 }
 
 document.addEventListener("DOMContentLoaded", updateNavbar);
+
 
