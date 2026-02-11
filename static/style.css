@@ -155,103 +155,31 @@ footer {
     text-decoration: none;
 }
 
-/* Auth Pages */
-.auth-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-}
+/* Auth Pages — CLEAN, FIXED VERSION */
 
-.auth-box {
-    background: white;
-    padding: 30px;
-    width: 90%;
-    max-width: 400px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.simple-header {
-    text-align: center;
-    padding: 30px;
-    background: #ffdde1;
-}
-
-
-.user-icon {
-    font-size: 1.3rem;
-    padding: 5px;
-}
-
-.profile-menu {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.user-icon {
-    font-size: 1.4rem;
-    padding: 5px;
-}
-
-.dropdown {
-    position: absolute;
-    right: 0;
-    top: 35px;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    min-width: 120px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    z-index: 100;
-}
-
-.dropdown a {
-    display: block;
-    padding: 10px;
-    color: #333;
-    text-decoration: none;
-}
-
-.dropdown a:hover {
-    background: #f0f0f0;
-}
-
-.hidden {
-    display: none;
-}
-
-
-.error {
-    color: red;
-    font-size: 0.8rem;
-    margin-top: 4px;
-    display: block;
-}
-
-#togglePassword {
-    margin-left: 10px;
-    padding: 4px 8px;
-    font-size: 0.8rem;
-    cursor: pointer;
-}
-
-/* Center the entire login/signup page */
+/* Page background */
 body.auth-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
     background: #fff7f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Banner at the top */
+.simple-header {
+    width: 100%;
+    background: #ffdde1;
+    padding: 40px 20px;
+    text-align: center;
+    margin: 0;
+    border-radius: 0;
 }
 
 /* Container that holds the form */
 .auth-container {
     display: flex;
-    justify-content: center;
-    width: 100%;
-    padding: 20px;
+    flex-direction: column; /* stack vertically */
+    align-items: center;
+    padding: 30px 20px;
 }
 
 /* The actual login/signup box */
@@ -262,76 +190,11 @@ body.auth-page {
     max-width: 400px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-top: 30px; /* space under banner */
     box-sizing: border-box;
 }
 
-/* Make form fields align properly */
-.auth-box .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-}
-
-/* Inputs full width */
-.auth-box input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-/* Center the header text */
-.simple-header h2,
-.auth-box h2 {
-    text-align: center;
-}
-
-/* AUTH PAGE LAYOUT */
-body.auth-page {
-    background: #fff7f9;
-    margin: 0;
-    padding: 0;
-}
-
-/* Two-column wrapper */
-.auth-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    width: 100%;
-}
-
-/* Left banner */
-.auth-banner {
-    flex: 1;
-    background: #ffdde1;
-    padding: 60px 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.auth-banner h2 {
-    font-size: 2rem;
-    color: #4a2c2a;
-    max-width: 300px;
-}
-
-/* Right form box */
-.auth-box {
-    flex: 1;
-    background: white;
-    padding: 40px;
-    max-width: 450px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    margin: 40px;
-}
-
-/* Form layout */
+/* Form fields */
 .auth-box .form-group {
     display: flex;
     flex-direction: column;
@@ -346,64 +209,25 @@ body.auth-page {
     box-sizing: border-box;
 }
 
+/* Center headings */
 .auth-box h2 {
     text-align: center;
     margin-bottom: 20px;
+}
+
+/* Error messages */
+.error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 4px;
+    display: block;
 }
 
 /* Show password button */
 #togglePassword {
     margin-top: 8px;
     align-self: flex-start;
-}
-
-/* Mobile responsive */
-@media (max-width: 800px) {
-    .auth-wrapper {
-        flex-direction: column;
-        padding: 20px;
-    }
-
-    .auth-banner {
-        width: 100%;
-        padding: 40px 20px;
-    }
-
-    .auth-box {
-        width: 100%;
-        margin: 20px 0;
-    }
-}
-
-/* Vertical auth layout */
-.auth-wrapper-vertical {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px;
-}
-
-/* Banner on top */
-.auth-banner-top {
-    background: #ffdde1;
-    padding: 40px 20px;
-    width: 100%;
-    text-align: center;
-    border-radius: 12px;
-    margin-bottom: 30px;
-}
-
-.auth-banner-top h2 {
-    font-size: 2rem;
-    color: #4a2c2a;
-}
-
-/* Form box */
-.auth-box {
-    background: white;
-    padding: 30px;
-    width: 100%;
-    max-width: 400px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
 }
