@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up — DreamTrips</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+
+<body>
+
+<header class="simple-header">
+    <h1>Create Your DreamTrips Account</h1>
+</header>
+
+<main class="auth-container">
+    <section class="auth-box">
+        <h2>Join Us</h2>
+
+        <form action="/signup" method="POST">
+            <label for="name">Full Name</label>
+            <input id="name" name="name" type="text" required>
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" required>
+
+            <button type="submit">Create Account</button>
+        </form>
+
+        <p>Already have an account? <a href="login.html">Login</a></p>
+    </section>
+</main>
+
+</body>
+</html>

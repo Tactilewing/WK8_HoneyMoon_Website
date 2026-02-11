@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamTrips Honeymoon</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+        <h1 class="logo">DreamTrips</h1>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#recommend-title">Destinations</a></li>
+            <li><a href="#itinerary-title">Itinerary</a></li>
+            <li><a href="#reviews-title">Reviews</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-banner">
+        <div class="hero-text">
+            <h2>Your Perfect Honeymoon Awaits</h2>
+            <p>Discover curated long‑haul destinations tailored to your love story</p>
+            <a href="signup.html" class="cta-button">Get Started</a>
+        </div>
+    </section>
+</header>
+
+<main>
+
+    <!-- Destination Recommendation Engine -->
+    <section aria-labelledby="recommend-title" class="feature-section">
+        <h2 id="recommend-title">Destination Recommendation Engine</h2>
+        <p>Tell us what you love and we’ll suggest the perfect honeymoon destination.</p>
+
+        <form id="recommendationForm">
+            <div class="form-group">
+                <label for="climate">Preferred Climate</label>
+                <select id="climate" name="climate">
+                    <option value="tropical">Tropical</option>
+                    <option value="mild">Mild</option>
+                    <option value="cold">Cold</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="activity">Activity Style</label>
+                <select id="activity" name="activity">
+                    <option value="relaxation">Relaxation</option>
+                    <option value="adventure">Adventure</option>
+                    <option value="culture">Culture</option>
+                </select>
+            </div>
+
+            <button type="button" id="recommendBtn">Get Recommendation</button>
+        </form>
+
+        <article id="recommendationResult" class="result-box" hidden></article>
+    </section>
+
+    <!-- Itinerary Planner -->
+    <section aria-labelledby="itinerary-title" class="feature-section">
+        <h2 id="itinerary-title">Interactive Itinerary Planner</h2>
+        <p>Create your dream honeymoon itinerary.</p>
+
+        <div class="itinerary-input">
+            <input type="text" id="itineraryItem" placeholder="Add an activity..." aria-label="Add itinerary item">
+            <button id="addItemBtn">Add</button>
+        </div>
+
+        <ul id="itineraryList" aria-live="polite"></ul>
+    </section>
+
+    <!-- Reviews -->
+    <section aria-labelledby="reviews-title" class="feature-section">
+        <h2 id="reviews-title">Customer Reviews & Ratings</h2>
+
+        <article class="review">
+            <h3>⭐️⭐️⭐️⭐️⭐️ — Sarah & Tom</h3>
+            <p>The Maldives package was absolutely magical. The itinerary planner made everything effortless.</p>
+        </article>
+
+        <article class="review">
+            <h3>⭐️⭐️⭐️⭐️ — Priya & Daniel</h3>
+            <p>We loved the personalised recommendations. Bora Bora was a dream come true.</p>
+        </article>
+
+        <article class="review">
+            <h3>⭐️⭐️⭐️⭐️⭐️ — Emma & Jack</h3>
+            <p>Perfect service from start to finish. Highly recommend DreamTrips Honeymoon.</p>
+        </article>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 DreamTrips Honeymoon — Crafted with love</p>
+</footer>
+
+<script src="static/app.js"></script>
+</body>
+</html>

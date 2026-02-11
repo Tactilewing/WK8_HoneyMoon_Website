@@ -1,0 +1,178 @@
+/* Global */
+body {
+    font-family: "Segoe UI", sans-serif;
+    margin: 0;
+    background: #fff7f9;
+    color: #333;
+}
+
+/* Header */
+.hero {
+    background: linear-gradient(135deg, #ffb6c1, #ffdde1);
+    padding: 40px;
+    text-align: center;
+    color: #4a2c2a;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.8rem;
+}
+
+/* Sections */
+.feature-section {
+    background: white;
+    margin: 30px auto;
+    padding: 25px;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Forms */
+.form-group {
+    margin: 15px 0;
+}
+
+label {
+    font-weight: bold;
+}
+
+select, input {
+    padding: 10px;
+    width: 100%;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* Buttons */
+button {
+    background: #ff8fa3;
+    border: none;
+    padding: 12px 20px;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+button:hover {
+    background: #ff6f8c;
+}
+
+/* Recommendation Box */
+.result-box {
+    margin-top: 20px;
+    padding: 15px;
+    background: #ffe6eb;
+    border-left: 4px solid #ff8fa3;
+    border-radius: 6px;
+}
+
+/* Itinerary */
+.itinerary-input {
+    display: flex;
+    gap: 10px;
+}
+
+#itineraryList {
+    margin-top: 20px;
+    padding-left: 20px;
+}
+
+#itineraryList li {
+    margin-bottom: 10px;
+    background: #fff1f4;
+    padding: 10px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Reviews */
+.review {
+    background: #fff1f4;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #ffdde1;
+    margin-top: 40px;
+}
+
+
+
+/* Navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #ffdde1;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #4a2c2a;
+    font-weight: bold;
+}
+
+/* Hero Banner */
+.hero-banner {
+    background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+    background-size: cover;
+    background-position: center;
+    padding: 120px 20px;
+    text-align: center;
+    color: white;
+}
+
+.hero-text h2 {
+    font-size: 2.5rem;
+}
+
+.cta-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 25px;
+    background: #ff8fa3;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+/* Auth Pages */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.auth-box {
+    background: white;
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.simple-header {
+    text-align: center;
+    padding: 30px;
+    background: #ffdde1;
+}
