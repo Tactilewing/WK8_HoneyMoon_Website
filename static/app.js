@@ -76,7 +76,6 @@ async function updateNavbar() {
     if (!navItem) return;
 
     if (data.session) {
-        // User is logged in — show profile dropdown
         navItem.innerHTML = `
             <div class="profile-menu">
                 <span class="user-icon">👤</span>
@@ -87,7 +86,6 @@ async function updateNavbar() {
             </div>
         `;
 
-        // Toggle dropdown on click
         const icon = navItem.querySelector(".user-icon");
         const dropdown = navItem.querySelector(".dropdown");
 
@@ -96,10 +94,9 @@ async function updateNavbar() {
         });
 
     } else {
-        // User is logged out — show Login
         navItem.innerHTML = `<a href="login.html">Login</a>`;
     }
 }
 
-updateNavbar();
+document.addEventListener("DOMContentLoaded", updateNavbar);
 
