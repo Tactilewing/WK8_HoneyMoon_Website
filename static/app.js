@@ -14,7 +14,7 @@ async function handleSignup(event) {
     const email = document.querySelector("#email")?.value;
     const password = document.querySelector("#password")?.value;
 
-    const { data, error } = await client.auth.signUp({
+    const { error } = await client.auth.signUp({
         email,
         password,
         options: {
@@ -40,7 +40,7 @@ async function handleLogin(event) {
     const email = document.querySelector("#email")?.value;
     const password = document.querySelector("#password")?.value;
 
-    const { data, error } = await client.auth.signInWithPassword({
+    const { error } = await client.auth.signInWithPassword({
         email,
         password
     });
@@ -62,13 +62,48 @@ async function logout() {
     window.location.href = "login.html";
 }
 
-// Attach handlers if forms exist on the page
-document.querySelector("#signupForm")?.addEventListener("submit", handleSignup);
-document.querySelector("#loginForm")?.addEventListener("submit", handleLogin);
+// =========================
+// RECOMMENDATION ENGINE
+// =========================
+function handleRecommendation() {
+    const climate = document.querySelector("#climate").value;
+    const activity = document.querySelector("#activity").value;
+    const resultBox = document.querySelector("#recommendationResult");
 
+    let recommendation = "";
+
+    if (climate === "tropical" && activity === "relaxation") {
+        recommendation = "We recommend the Maldives — perfect beaches and luxury resorts.";
+    } else if (climate === "mild" && activity === "culture") {
+        recommendation = "We recommend Kyoto — serene temples and beautiful gardens.";
+    } else if (climate === "cold" && activity === "adventure") {
+        recommendation = "We recommend Iceland — glaciers, waterfalls, and northern lights.";
+    } else {
+        recommendation = "We recommend Bali — a perfect all‑round honeymoon destination.";
+    }
+
+    resultBox.textContent = recommendation;
+    resultBox.hidden = false;
+}
 
 // =========================
-// UPDATE NAVBAR BASED ON LOGIN STATE
+// ITINERARY PLANNER
+// =========================
+function addItineraryItem() {
+    const input = document.querySelector("#itineraryItem");
+    const list = document.querySelector("#itineraryList");
+
+    if (!input.value.trim()) return;
+
+    const li = document.createElement("li");
+    li.textContent = input.value;
+    list.appendChild(li);
+
+    input.value = "";
+}
+
+// =========================
+// NAVBAR LOGIN STATE
 // =========================
 async function updateNavbar() {
     const sessionResponse = await client.auth.getSession();
@@ -100,6 +135,15 @@ async function updateNavbar() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", updateNavbar);
+// =========================
+// INITIALIZE EVERYTHING
+// =========================
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelector("#signupForm")?.addEventListener("submit", handleSignup);
+    document.querySelector("#loginForm")?.addEventListener("submit", handleLogin);
 
+    document.querySelector("#recommendBtn")?.addEventListener("click", handleRecommendation);
+    document.querySelector("#addItemBtn")?.addEventListener("click", addItineraryItem);
 
+    updateNavbar();
+});
