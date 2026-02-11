@@ -176,3 +176,9 @@ footer {
     padding: 30px;
     background: #ffdde1;
 }
+
+
+.user-icon {
+    font-size: 1.3rem;
+    padding: 5px;
+}

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login — DreamTrips</title>
     <link rel="stylesheet" href="static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="static/app.js" defer></script>
 </head>
 
 <body>
@@ -17,7 +19,8 @@
     <section class="auth-box">
         <h2>Welcome Back</h2>
 
-        <form action="/login" method="POST">
+        <!-- Updated form -->
+        <form id="loginForm">
             <label for="email">Email</label>
             <input id="email" name="email" type="email" required>
 

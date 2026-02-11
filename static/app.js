@@ -1,39 +1,90 @@
-// Destination Recommendation Engine
-document.getElementById("recommendBtn").addEventListener("click", () => {
-    const climate = document.getElementById("climate").value;
-    const activity = document.getElementById("activity").value;
+// Initialize Supabase client
+const client = supabase.createClient(
+    "https://tauhvazmkwoknexyeqfh.supabase.co",
+    "sb-publishable-cPbUr91fgcyXr0R6m34W5w_RVk-wF2O"
+);
 
-    let destination = "";
+// =========================
+// SIGNUP
+// =========================
+async function handleSignup(event) {
+    event.preventDefault();
 
-    if (climate === "tropical" && activity === "relaxation") {
-        destination = "Maldives — Overwater villas, turquoise lagoons, and pure serenity.";
-    } else if (climate === "tropical" && activity === "adventure") {
-        destination = "Bali — Waterfalls, volcano hikes, and vibrant culture.";
-    } else if (climate === "mild" && activity === "culture") {
-        destination = "Kyoto — Temples, gardens, and peaceful traditional charm.";
-    } else if (climate === "cold" && activity === "relaxation") {
-        destination = "Iceland — Hot springs, cosy lodges, and breathtaking landscapes.";
-    } else {
-        destination = "Seychelles — A perfect blend of beaches, nature, and romance.";
+    const name = document.querySelector("#name")?.value;
+    const email = document.querySelector("#email")?.value;
+    const password = document.querySelector("#password")?.value;
+
+    const { data, error } = await client.auth.signUp({
+        email,
+        password,
+        options: {
+            data: { full_name: name }
+        }
+    });
+
+    if (error) {
+        alert("Signup failed: " + error.message);
+        return;
     }
 
-    const resultBox = document.getElementById("recommendationResult");
-    resultBox.hidden = false;
-    resultBox.textContent = destination;
-});
+    alert("Signup successful! Redirecting...");
+    window.location.href = "index.html";
+}
 
-// Itinerary Planner
-document.getElementById("addItemBtn").addEventListener("click", () => {
-    const itemText = document.getElementById("itineraryItem").value.trim();
-    if (!itemText) return;
+// =========================
+// LOGIN
+// =========================
+async function handleLogin(event) {
+    event.preventDefault();
 
-    const li = document.createElement("li");
-    li.innerHTML = `${itemText} <button class="removeBtn">Remove</button>`;
+    const email = document.querySelector("#email")?.value;
+    const password = document.querySelector("#password")?.value;
 
-    document.getElementById("itineraryList").appendChild(li);
-    document.getElementById("itineraryItem").value = "";
-
-    li.querySelector(".removeBtn").addEventListener("click", () => {
-        li.remove();
+    const { data, error } = await client.auth.signInWithPassword({
+        email,
+        password
     });
-});
+
+    if (error) {
+        alert("Login failed: " + error.message);
+        return;
+    }
+
+    alert("Login successful!");
+    window.location.href = "index.html";
+}
+
+// =========================
+// LOGOUT
+// =========================
+async function logout() {
+    await client.auth.signOut();
+    window.location.href = "login.html";
+}
+
+// Attach handlers if forms exist on the page
+document.querySelector("#signupForm")?.addEventListener("submit", handleSignup);
+document.querySelector("#loginForm")?.addEventListener("submit", handleLogin);
+
+
+// =========================
+// UPDATE NAVBAR BASED ON LOGIN STATE
+// =========================
+async function updateNavbar() {
+    const { data } = await client.auth.getSession();
+
+    const navItem = document.querySelector("#authNavItem");
+    if (!navItem) return;
+
+    if (data.session) {
+        // User is logged in — replace Login with icon
+        navItem.innerHTML = `
+            <a href="#" onclick="logout()" title="Logout" class="user-icon">👤</a>
+        `;
+    } else {
+        // User is logged out — show Login
+        navItem.innerHTML = `<a href="login.html">Login</a>`;
+    }
+}
+
+updateNavbar();

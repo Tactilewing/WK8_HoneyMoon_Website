@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up — DreamTrips</title>
     <link rel="stylesheet" href="static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="static/app.js" defer></script>
 </head>
 
 <body>
@@ -17,7 +19,8 @@
     <section class="auth-box">
         <h2>Join Us</h2>
 
-        <form action="/signup" method="POST">
+        <!-- Corrected form -->
+        <form id="signupForm">
             <label for="name">Full Name</label>
             <input id="name" name="name" type="text" required>
 
