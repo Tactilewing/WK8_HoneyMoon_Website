@@ -108,8 +108,6 @@ footer {
     margin-top: 40px;
 }
 
-
-
 /* Navigation */
 .navbar {
     display: flex;
@@ -129,6 +127,40 @@ footer {
     text-decoration: none;
     color: #4a2c2a;
     font-weight: bold;
+}
+
+/* Profile dropdown (fixed) */
+.profile-menu {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: absolute;
+    right: 0;
+    top: 35px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    min-width: 120px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+.dropdown a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.dropdown a:hover {
+    background: #f0f0f0;
+}
+
+.hidden {
+    display: none;
 }
 
 /* Hero Banner */
@@ -155,34 +187,47 @@ footer {
     text-decoration: none;
 }
 
-/* Auth Pages — CLEAN, FIXED VERSION */
+/* =============================== */
+/* AUTH PAGES — FIXED + ISOLATED   */
+/* =============================== */
 
-/* Page background */
-body.auth-page {
-    background: #fff7f9;
-    margin: 0;
-    padding: 0;
-}
+/* IMPORTANT:
+   We no longer use body.auth-page for layout.
+   This prevents breaking the navbar + dropdown.
+*/
 
-/* Banner at the top */
-.simple-header {
-    width: 100%;
-    background: #ffdde1;
-    padding: 40px 20px;
-    text-align: center;
-    margin: 0;
-    border-radius: 0;
-}
-
-/* Container that holds the form */
-.auth-container {
+.auth-page {
     display: flex;
-    flex-direction: column; /* stack vertically */
+    justify-content: center;
     align-items: center;
-    padding: 30px 20px;
+    min-height: 100vh;
 }
 
-/* The actual login/signup box */
+/* Wrapper that holds BOTH banner + form */
+.auth-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Banner */
+.auth-banner {
+    background: #ffdde1;
+    padding: 20px 20px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.auth-banner h2 {
+    font-size: 2rem;
+    color: #4a2c2a;
+}
+
+/* Form box */
 .auth-box {
     background: white;
     padding: 30px;
@@ -190,7 +235,6 @@ body.auth-page {
     max-width: 400px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    margin-top: 30px; /* space under banner */
     box-sizing: border-box;
 }
 
